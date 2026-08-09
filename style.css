@@ -1,10 +1,10 @@
 .cuadrado {
     display: flex;
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     cursor: pointer;
-    min-width: 20px;
-    min-height: 20px;
+    min-width: 15x;
+    min-height: 15px;
     color: black;
     background-color: black;
 
@@ -18,11 +18,25 @@
 .elementodelista {
     display: flex;
     width: 200px;
-    height: 200px;
+    height: 50px;
+    align-items: center;
 }
 
 .miserrores {
     display: flex;
     width: 200px;
     height: 200px;
+    flex-direction: column;
+}
+
+.boton {
+    width: 15px;
+    height: 15px;
+    border-radius: 999%;
+    cursor: pointer;
+    min-width: 15px;
+    min-height: 15px;
+    color: crimson;
+    background-color: crimson;
+    
 }

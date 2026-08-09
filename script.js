@@ -11,6 +11,9 @@ function addTask() {
   const task = document.createElement("div");
   task.classList.add("elementodelista");
 
+  const boton = document.createElement("div");
+  boton.classList.add("boton");
+
   const cuadro = document.createElement("div");
   cuadro.classList.add("cuadrado");
 
@@ -28,11 +31,16 @@ function addTask() {
     }
   });
 
-  task.appendChild(cuadro);
+  boton.addEventListener("click", () => {
+    task.remove();
+  });
+
+  task.appendChild(boton);
   task.appendChild(texto);
+  task.appendChild(cuadro);
   taskList.appendChild(task);
-  cuadro.style.width = "20px";
-  cuadro.style.height = "20px";
+  cuadro.style.width = "15px";
+  cuadro.style.height = "15px";
 
   taskInput.value = "";
 }

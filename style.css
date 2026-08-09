@@ -1,0 +1,28 @@
+.cuadrado {
+    display: flex;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    min-width: 20px;
+    min-height: 20px;
+    color: black;
+    background-color: black;
+
+}
+
+.completado {
+    background-color: green;
+    border-color: green;
+}
+
+.elementodelista {
+    display: flex;
+    width: 200px;
+    height: 200px;
+}
+
+.miserrores {
+    display: flex;
+    width: 200px;
+    height: 200px;
+}

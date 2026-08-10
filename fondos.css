@@ -13,7 +13,7 @@
 body {
     background: #995CD0;
     background: linear-gradient(90deg, rgba(153, 92, 208, 1) 0%, rgba(145, 108, 173, 1) 50%, rgba(82, 56, 120, 1) 100%);
-    color: aliceblue;
+    color: #adf182;
     font-family: "Bitcount Prop Single", system-ui;
 
 }

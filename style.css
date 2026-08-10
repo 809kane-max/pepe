@@ -1,32 +1,23 @@
-.cuadrado {
-    display: flex;
-    width: 15px;
-    height: 15px;
-    cursor: pointer;
-    min-width: 15x;
-    min-height: 15px;
-    color: rgb(18, 54, 162);
-    background-color: rgb(48, 80, 179);
-
-}
-
-.completado {
-    background-color: green;
-    border-color: green;
-}
-
 .elementodelista {
     display: flex;
     width: 200px;
     height: 50px;
     align-items: center;
+    overflow: hidden;
 }
 
-.miserrores {
-    display: flex;
-    width: 200px;
-    height: 200px;
-    flex-direction: column;
+.elementodelista p {
+    cursor: pointer;
+    flex: 1;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.elementodelista p.completado {
+    text-decoration: line-through;
+    opacity: 0.6;
 }
 
 .boton {
@@ -38,7 +29,14 @@
     min-height: 15px;
     color: crimson;
     background-color: crimson;
-    
+    flex-shrink: 0;
+}
+
+.miserrores {
+    display: flex;
+    width: 200px;
+    height: 200px;
+    flex-direction: column;
 }
 
 body {
@@ -54,6 +52,35 @@ body {
     margin-top: 10px;
 }
 
+@keyframes entrada {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes salida {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+}
+
+.task-enter {
+    animation: entrada 0.25s ease-out;
+}
+
+.task-exit {
+    animation: salida 0.2s ease-in forwards;
+}
 
 
 

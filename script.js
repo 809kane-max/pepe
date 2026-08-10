@@ -4,43 +4,58 @@ const taskList = document.getElementById("tasList");
 
 addButton.onclick = addTask;
 
-function addTask() {
-  const taskText = taskInput.value;
-  if (taskText.trim() === "") return;
+document.addEventListener("DOMContentLoaded", loadTasks);
 
-  const task = document.createElement("div");
-  task.classList.add("elementodelista");
-
-  const boton = document.createElement("div");
-  boton.classList.add("boton");
-
-  const cuadro = document.createElement("div");
-  cuadro.classList.add("cuadrado");
-
-
-  const texto = document.createElement("p");
-  texto.textContent = taskText;
-
-
-  cuadro.addEventListener("click", () => {
-    cuadro.classList.toggle("completado");
-    if (cuadro.classList.contains("completado")) {
-      texto.textContent = "tarea completada";
-    } else {
-      texto.textContent = taskText;
+function addTask(taskText, completed = false) {
+    if (typeof taskText !== "string") {
+        taskText = taskInput.value;
     }
-  });
+    if (taskText.trim() === "") return;
 
-  boton.addEventListener("click", () => {
-    task.remove();
-  });
+    const task = document.createElement("div");
+    task.classList.add("elementodelista", "task-enter");
 
-  task.appendChild(boton);
-  task.appendChild(texto);
-  task.appendChild(cuadro);
-  taskList.appendChild(task);
-  cuadro.style.width = "15px";
-  cuadro.style.height = "15px";
+    const boton = document.createElement("div");
+    boton.classList.add("boton");
 
-  taskInput.value = "";
+    const texto = document.createElement("p");
+    texto.textContent = taskText;
+    if (completed) texto.classList.add("completado");
+
+    texto.addEventListener("click", () => {
+        texto.classList.toggle("completado");
+        saveTasks();
+    });
+
+    boton.addEventListener("click", () => {
+        task.classList.add("task-exit");
+        task.addEventListener("animationend", () => {
+            task.remove();
+            saveTasks();
+        }, { once: true });
+    });
+
+    task.appendChild(texto);
+    task.appendChild(boton);
+    taskList.appendChild(task);
+
+    taskInput.value = "";
+    saveTasks();
+}
+
+function saveTasks() {
+    const tasks = [];
+    document.querySelectorAll("#tasList .elementodelista").forEach(task => {
+        const p = task.querySelector("p");
+        tasks.push({
+            text: p.textContent,
+            completed: p.classList.contains("completado")
+        });
+    });
+    localStorage.setItem("brainDumpTasks", JSON.stringify(tasks));
+}
+
+function loadTasks() {
+    const saved = JSON.parse(localStorage.getItem("brainDumpTasks")) || [];
+    saved.forEach(t => addTask(t.text, t.completed));
 }

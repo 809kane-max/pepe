@@ -2,7 +2,6 @@
 <html lang="es">
 
 <head>
-
     <meta charset="UTF-8">
     <title>brain dump</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -10,13 +9,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Single:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="fondos.css">
-   
 </head>
 
 <body>
 
     <div id="navbar">
+        <div id="rachaepica"></div>
         <span id="updateTime"></span>
+    </div>
+
+    <div id="rachaepicapanel">
+        <div id="rachaepicanumero">0</div>
+        <div id="rachaepicatexto">días de racha</div>
+        <div class="dias-semana"></div>
     </div>
 
     <div style="margin-top: 50px;"></div>
@@ -24,25 +29,22 @@
     <h1> brain dump</h1>
 
     <div id="newtask">
+        <input
+        type="text"
+        id="taskInput"
+        placeholder="what are your tasks for today?"
+        >
 
-    <input
-    type="text"
-    id="taskInput"
-    placeholder="what are your tasks for today?"
-   >
-   
-   <button id="addButton">Add task</button>
-
+        <button id="addButton">Add task</button>
     </div>
 
-   <div></div>
+    <div></div>
 
-   <h2>DRAGON´S LAIR</h2>
+    <h2>DRAGON'S LAIR</h2>
 
-   <div class="miserrores" id="tasList"></div>
+    <div class="miserrores" id="tasList"></div>
 
-
-   <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
     

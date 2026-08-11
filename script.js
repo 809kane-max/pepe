@@ -118,6 +118,7 @@ function mostrardiasderacha() {
     const nombresdias = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
 
     for (let i = 6; i >= 0; i--) {
+
         const fecha = new Date();
         fecha.setDate(fecha.getDate() - i);
         const fechaStr = fecha.toDateString();
@@ -133,6 +134,8 @@ function mostrardiasderacha() {
 
         const letra = document.createElement("span");
         letra.textContent = nombresdias[fecha.getDay()];
+        letra.classList.add("dia-letra");
+        if (i === 0) letra.classList.add("dia-letra-hoy");
 
         item.appendChild(circulo);
         item.appendChild(letra);

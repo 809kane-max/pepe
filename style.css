@@ -11,6 +11,10 @@
     margin-top: 10px;
 }
 
+.elementodelista:hover {
+    overflow-y: auto;
+}
+
 .elementodelista p {
     cursor: pointer;
     flex: 1;
@@ -19,6 +23,17 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+.elementodelista:hover p {
+    cursor: pointer;
+    flex: 1;
+    margin: 0;
+    overflow-y: auto;
+    height: 100%;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
 
 .elementodelista p.completado {
     text-decoration: line-through;
@@ -40,7 +55,8 @@
 .miserrores {
     display: flex;
     width: 200px;
-    height: 200px;
+    max-height: 300px;
+    overflow-y: scroll;
     flex-direction: column;
 }
 

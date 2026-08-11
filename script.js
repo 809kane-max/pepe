@@ -59,3 +59,11 @@ function loadTasks() {
     const saved = JSON.parse(localStorage.getItem("brainDumpTasks")) || [];
     saved.forEach(t => addTask(t.text, t.completed));
 }
+
+function updateTime() {
+    var ahora = new Date(). toLocaleDateString();
+    var timeText = document.querySelector("#updateTime")
+    timeText.innerHTML = ahora;
+
+}
+setInterval(updateTime, 1000);

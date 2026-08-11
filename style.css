@@ -9,6 +9,7 @@
     border-radius: 10px;
     box-shadow: 0 15px 30px rgba(0,0,0,0.3 );
     margin-top: 10px;
+    min-height: 40px;
 }
 
 .elementodelista:hover {
@@ -55,6 +56,7 @@
 .miserrores {
     display: flex;
     width: 200px;
+    height: 300px;
     max-height: 300px;
     overflow-y: scroll;
     flex-direction: column;
@@ -127,6 +129,24 @@ body {
     cursor: pointer;
 } 
 
+#navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    background: #25629b;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3 );
+    box-sizing: border-box;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+#navbar span {
+    color: #cdd3f4;
+    font-size: 14px;
+}
 
 
 

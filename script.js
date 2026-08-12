@@ -34,6 +34,9 @@ function addTask(taskText, completed = false) {
         texto.classList.toggle("completado");
         if (texto.classList.contains("completado")) {
             marcardiaconracha();
+            taskList.appendChild(task);
+        } else {
+            taskList.prepend(task);
         }
         saveTasks();
     });
@@ -142,3 +145,5 @@ function mostrardiasderacha() {
         contenedor.appendChild(item);
     }
 }
+
+

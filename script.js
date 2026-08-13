@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", loadTasks);
 document.addEventListener("DOMContentLoaded", mostrardiasderacha);
 
 rachaepica.addEventListener("click", () => {
+    document.getElementById("calendariopanel").classList.remove("visible");
     rachaepicapanel.classList.toggle("visible");
     mostrardiasderacha();
 });
@@ -79,6 +80,7 @@ function updateTime() {
     var timeText = document.querySelector("#updateTime")
     timeText.innerHTML = ahora;
 }
+updateTime();
 setInterval(updateTime, 1000);
 
 
@@ -193,7 +195,8 @@ function renderCalendario() {
 
 document.getElementById("calendario").addEventListener("click", () => {
     const panel = document.getElementById("calendariopanel");
-    panel.style.display = panel.style.display === "block" ? "none" : "block";
+    rachaepicapanel.classList.remove("visible");
+    panel.classList.toggle("visible");
     renderCalendario();
 });
 

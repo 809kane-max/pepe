@@ -286,6 +286,99 @@ body {
     font-family: "Bitcount Prop Single", system-ui;
 }
 
+#calendario {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #cdd3f4;
+    box-shadow: 0 0 6px rgba(205, 211, 244, 0.7), 0 0 14px rgba(140, 160, 255, 0.4);
+    cursor: pointer;
+}
+
+#calendario::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 9px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #25629b;
+}
+
+#calendariopanel {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 24px;
+    background: #03387d;
+    border-radius: 10px;
+    padding: 15px 20px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3 );
+    z-index: 20;
+    width: 260px;
+}
+
+#calendarioheader button {
+    background: none;
+    border: none;
+    color: #cdd3f4;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+#calendarioDiasSemana {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    color: #cdd3f4;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+#calendarioGrid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+}
+
+#calendarioGrid .dia {
+    text-align: center;
+    color: #cdd3f4;
+    font-size: 13px;
+    padding: 4px 0;
+    border-radius: 50%;
+    cursor: default;
+}
+
+#calendarioGrid .dia-circulo {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: rgba(205, 211, 244, 0.15);
+    border: 1px solid rgba(205, 211, 244, 0.3);
+}
+
+#calendarioGrid .dia-circulo-activo {
+    background: #EC7744;
+    border: 1px solid #EC7744;
+}
+
+#calendarioGrid .dia.numero {
+    color: #cdd3f4;
+    font-size: 11px;
+}
+
+#calendarioGrid .dia.con-racha {
+    background: #EC7744;
+    color: white;
+    font-weight: bold;
+}
+
+#calendarioGrid .dia.vacio {
+    visibility: hidden;
+}
 
 
 

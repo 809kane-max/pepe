@@ -146,4 +146,64 @@ function mostrardiasderacha() {
     }
 }
 
+let fechaActual = new Date();
+
+function renderCalendario() {
+    const grid = document.getElementById("calendarioGrid");
+    const mesAno = document.getElementById("calendarioMesAno");
+    grid.innerHTML = "";
+
+    const anio = fechaActual.getFullYear();
+    const mes = fechaActual.getMonth();
+
+    const nombresMeses = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+    mesAno.textContent = `${nombresMeses[mes]} ${anio}`;
+
+    const primerDia = new Date(anio, mes, 1).getDay();
+    const diasEnMes = new Date(anio, mes + 1, 0).getDate();
+    const diasConRacha = JSON.parse(localStorage.getItem("diasconracha")) || [];
+
+    for (let i = 0; i < primerDia; i++) {
+        const vacio = document.createElement("div");
+        vacio.classList.add("dia", "vacio");
+        grid.appendChild(vacio);
+    }
+
+    for (let d = 1; d <= diasEnMes; d++) {
+        const dia = document.createElement("div");
+        dia.classList.add("dia");
+        dia.textContent = d;
+
+        const circulo = document.createElement("div");
+        circulo.classList.add("dia-circulo");
+
+        const numero = document.createElement("span");
+        numero.classList.add("dia-numero");
+        numero.textContent = d;
+
+        const fechaObj = new Date(anio, mes, d);
+        const fechaStr = fechaObj.toDateString();
+        if (diasConRacha.includes(fechaStr)) {
+            circulo.classList.add("dia-circulo-activo");
+        }
+
+        grid.appendChild(dia);
+    }
+}
+
+document.getElementById("calendario").addEventListener("click", () => {
+    const panel = document.getElementById("calendariopanel");
+    panel.style.display = panel.style.display === "block" ? "none" : "block";
+    renderCalendario();
+});
+
+document.getElementById("mesAnterior").addEventListener("click", () => {
+    fechaActual.setMonth(fechaActual.getMonth() - 1);
+    renderCalendario();
+});
+
+document.getElementById("mesSiguiente").addEventListener("click", () => {
+    fechaActual.setMonth(fechaActual.getMonth() + 1);
+    renderCalendario();
+});
 

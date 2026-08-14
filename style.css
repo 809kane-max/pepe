@@ -180,6 +180,7 @@ body {
     position: absolute;
     bottom: 0%;
     left: 50%;
+    width: 24px;
     transform: translateX(-50%);
     border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
     background: radial-gradient(circle at 50% 80%, #fff59d , #ffb300 40%, #ff6f00 70%, #e65100 100%);

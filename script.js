@@ -52,7 +52,12 @@ function addTask(taskText, completed = false) {
 
     task.appendChild(texto);
     task.appendChild(boton);
-    taskList.appendChild(task);
+    
+    if (completed) {
+        taskList.appendChild(task);
+    } else {
+        taskList.prepend(task);
+    }
 
     taskInput.value = "";
     saveTasks();
@@ -174,7 +179,6 @@ function renderCalendario() {
     for (let d = 1; d <= diasEnMes; d++) {
         const dia = document.createElement("div");
         dia.classList.add("dia");
-        dia.textContent = d;
 
         const circulo = document.createElement("div");
         circulo.classList.add("dia-circulo");
@@ -188,6 +192,9 @@ function renderCalendario() {
         if (diasConRacha.includes(fechaStr)) {
             circulo.classList.add("dia-circulo-activo");
         }
+
+        dia.appendChild(circulo);
+        dia.appendChild(numero);
 
         grid.appendChild(dia);
     }

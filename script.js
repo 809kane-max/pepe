@@ -3,6 +3,8 @@ const addButton = document.getElementById("addButton");
 const taskList = document.getElementById("tasList");
 const rachaepica = document.getElementById("rachaepica");
 const rachaepicapanel = document.getElementById("rachaepicapanel");
+const alerta = document.getElementById("alerta");
+const alertapanel = document.getElementById("alertapanel");
 
 addButton.onclick = addTask;
 
@@ -13,6 +15,12 @@ rachaepica.addEventListener("click", () => {
     document.getElementById("calendariopanel").classList.remove("visible");
     rachaepicapanel.classList.toggle("visible");
     mostrardiasderacha();
+});
+
+alerta.addEventListener("click", () => {
+    document.getElementById("calendariopanel").classList.remove("visible");
+    rachaepicapanel.classList.remove("visible");
+    alertapanel.classList.toggle("visible");
 });
 
 function addTask(taskText, completed = false) {
@@ -85,6 +93,7 @@ function updateTime() {
     var timeText = document.querySelector("#updateTime")
     timeText.innerHTML = ahora;
 }
+
 updateTime();
 setInterval(updateTime, 1000);
 

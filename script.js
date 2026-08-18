@@ -17,10 +17,27 @@ rachaepica.addEventListener("click", () => {
     mostrardiasderacha();
 });
 
+let alertaClicks = 0;
+
 alerta.addEventListener("click", () => {
     document.getElementById("calendariopanel").classList.remove("visible");
     rachaepicapanel.classList.remove("visible");
-    alertapanel.classList.toggle("visible");
+
+    alertaClicks = (alertaClicks + 1) % 4;
+
+    if (alertaClicks === 1) {
+        alertapanel.classList.add("visible");
+        alertapanel.classList.remove("solo-imagenes");
+    } else if (alertaClicks === 2) {
+        alertapanel.classList.add("visible");
+        alertapanel.classList.add("solo-imagenes");
+    } else if (alertaClicks === 3) {
+        alertapanel.classList.add("visible");
+        alertapanel.classList.remove("solo-imagenes");
+    } else {
+        alertapanel.classList.remove("visible");
+        alertapanel.classList.remove("solo-imagenes");
+    }
 });
 
 function addTask(taskText, completed = false) {
@@ -108,9 +125,9 @@ function marcardiaconracha() {
     }
 }
 
-function calcularRachaActual() {
+function obtenerDiasRachaActualLista() {
     const dias = JSON.parse(localStorage.getItem("diasconracha")) || [];
-    let racha = 0;
+    let racha = [];
 
     for (let i = 0; i < 365; i++) {
         const fecha = new Date();
@@ -118,7 +135,7 @@ function calcularRachaActual() {
         const fechaStr = fecha.toDateString();
 
         if (dias.includes(fechaStr)) {
-            racha++;
+            racha.push(fechaStr);
         } else {
             break;
         }
@@ -127,8 +144,13 @@ function calcularRachaActual() {
     return racha;
 }
 
+function calcularRachaActual() {
+    return obtenerDiasRachaActualLista().length;
+}
+
 function mostrardiasderacha() {
     const dias = JSON.parse(localStorage.getItem("diasconracha")) || [];
+    const diasRachaActual = obtenerDiasRachaActualLista();
     const contenedor = document.querySelector(".dias-semana");
     contenedor.innerHTML = "";
 
@@ -141,7 +163,7 @@ function mostrardiasderacha() {
         const fecha = new Date();
         fecha.setDate(fecha.getDate() - i);
         const fechaStr = fecha.toDateString();
-        const tuvoracha = dias.includes(fechaStr);
+        const tuvoracha = diasRachaActual.includes(fechaStr);
 
         const item = document.createElement("div");
         item.classList.add("dia-item");
@@ -198,8 +220,12 @@ function renderCalendario() {
 
         const fechaObj = new Date(anio, mes, d);
         const fechaStr = fechaObj.toDateString();
+        const diasRachaActual = obtenerDiasRachaActualLista();
+
         if (diasConRacha.includes(fechaStr)) {
             circulo.classList.add("dia-circulo-activo");
+        } else if (diasConRacha.includes(fechaStr)) {
+            circulo.classList.add("dia-circulo-completado");
         }
 
         dia.appendChild(circulo);

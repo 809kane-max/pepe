@@ -348,8 +348,8 @@ body {
 }
 
 #calendarioGrid .dia-circulo-activo {
-    background: #EC7744;
-    border: 1px solid #EC7744;
+    background: rgba(205, 211, 244, 0.35);
+    border: 1px solid rgba(205, 211, 244, 0.5);
 }
 
 #calendarioGrid .dia.numero {
@@ -409,10 +409,14 @@ body {
 #alertapanel.visible #alertaHeader {
     transform: translate(-50%, -50%); scale:(1);
     opacity: 1;
-    filter: grayscale(0%);
 }
 
-#alertaHearderIcono {
+#alertapanel.solo-imagenes #alertaHeader {
+    transform: translate(-50%, -50%); scale:(0.3);
+    opacity: 0;
+}
+
+#alertaHeaderIcono {
     width: 120px;
     height: 120px;
 }
@@ -434,6 +438,7 @@ body {
 #alertapanel.visible #alertaEva {
     opacity: 1;
     transform: translateY(0);
+    transition-delay: 0.15s;
 }
 
 #alertaShinji  {
@@ -445,9 +450,10 @@ body {
     transition: opacity 0.5s ease 0.25s, transform 0.5s ease 0.25s;
 }
 
-#alertapanel.visible #alertaShinji {
+#alertapanel.solo-imagenes #alertaShinji {
     opacity: 1;
     transform: translateY(0);
+    transition-delay: 0.25s;
 }
 
 #alertaEva img {

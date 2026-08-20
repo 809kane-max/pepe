@@ -9,4 +9,7 @@ This project was born out of my own lack of organization, which is exactly the i
 
 
 credits= indieseal (my best friend)
-credits = tutorial [](https://www.youtube.com/watch?v=9xEzS-jOWiA)
+
+credits = tutorial [
+
+](https://www.youtube.com/watch?v=9xEzS-jOWiA)
